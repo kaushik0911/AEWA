@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+
+  active_admin:
+    powered_by: "ALPHA ENGINEERING SERVICE v0.1"
+    dashboard_welcome:
+      welcome: "More to come.."
+
+
