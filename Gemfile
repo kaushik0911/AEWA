@@ -75,3 +75,9 @@ gem 'active_skin'
 
 # Active admin rich editor
 gem 'activeadmin_quill_editor'
+
+# Active admin google maps
+gem 'activeadmin_latlng'
+
+# To handle appliction variables
+gem "figaro"

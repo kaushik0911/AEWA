@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2021_05_16_062846) do
     t.string "street"
     t.string "city"
     t.string "zipcode"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "lat"
+    t.float "lng"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -5,8 +5,8 @@ class CreateLocations < ActiveRecord::Migration[5.2]
       t.string :street
       t.string :city
       t.string :zipcode
-      t.float :latitude
-      t.float :longitude
+      t.float :lat
+      t.float :lng
       t.integer :status
       t.timestamps
     end
