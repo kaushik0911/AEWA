@@ -22,6 +22,11 @@ $skinLogo: asset_url("admin_logo.png") no-repeat 0 0;
 
 @import "active_skin";
 
+// -- active admin rich text editor --
+@import 'activeadmin/quill_editor/quill.snow';
+@import 'activeadmin/quill_editor_input';
+// -----------------------------------
+
 #site_title {
   background-size: 40px 40px !important;
   padding-left: 10px !important;

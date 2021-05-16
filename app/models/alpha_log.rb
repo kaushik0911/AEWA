@@ -1,0 +1,2 @@
+class AlphaLog < ApplicationRecord
+end

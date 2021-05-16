@@ -73,3 +73,5 @@ gem 'rack-cors'
 # Active admin theme
 gem 'active_skin'
 
+# Active admin rich editor
+gem 'activeadmin_quill_editor'
