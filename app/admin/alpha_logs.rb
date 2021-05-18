@@ -1,4 +1,5 @@
 ActiveAdmin.register AlphaLog do
+  menu false
   permit_params :comment, :cost
 
   index do
