@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_062846) do
+ActiveRecord::Schema.define(version: 2021_05_18_045631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,23 @@ ActiveRecord::Schema.define(version: 2021_05_16_062846) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contract_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "contract_statuses_id"
+    t.bigint "locations_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_statuses_id"], name: "index_contracts_on_contract_statuses_id"
+    t.index ["locations_id"], name: "index_contracts_on_locations_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "title"
     t.string "street"
@@ -55,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_05_16_062846) do
     t.string "zipcode"
     t.float "lat"
     t.float "lng"
-    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
