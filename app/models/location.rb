@@ -1,4 +1,7 @@
 class Location < ApplicationRecord
-  # enum status: [:pending, :negotiating, :accepted, :inprogress, :hold, :completed, :canceled]
-  has_one :contract
+  has_many :contract
+
+  def address
+    [street, city, zipcode].compact.map(&:capitalize).join(', ')
+  end
 end

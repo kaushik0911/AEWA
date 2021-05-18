@@ -1,13 +1,24 @@
 ActiveAdmin.register Location do
-  permit_params :title, :street, :city, :zipcode, :lat, :lng, :status
+  menu priority: 2
 
+  permit_params :title, :street, :city, :zipcode, :lat, :lng
+
+  filter :city_cont, label: 'city'
+  filter :contract, label: 'contract'
+
+  index do
+    id_column
+    column :address
+    column('number of contracts') { |location| location.contract.count }
+    actions
+  end
+  
   form do |f|
     f.inputs 'Site Location Details' do
       f.input :title
       f.input :street
       f.input :city
       f.input :zipcode
-      f.input :status
     end
 
     f.inputs 'Site Location' do
@@ -18,5 +29,4 @@ ActiveAdmin.register Location do
 
     f.actions
   end
-  
 end
