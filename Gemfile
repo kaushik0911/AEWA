@@ -81,3 +81,7 @@ gem 'activeadmin_latlng'
 
 # To handle appliction variables
 gem "figaro"
+
+# ActiveAdmin Addons
+# https://github.com/platanus/activeadmin_addons 
+gem 'activeadmin_addons'
