@@ -57,12 +57,14 @@ ActiveRecord::Schema.define(version: 2021_05_18_045631) do
   create_table "contracts", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.bigint "contract_statuses_id"
-    t.bigint "locations_id"
+    t.bigint "contract_status_id"
+    t.bigint "location_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contract_statuses_id"], name: "index_contracts_on_contract_statuses_id"
-    t.index ["locations_id"], name: "index_contracts_on_locations_id"
+    t.index ["contract_status_id"], name: "index_contracts_on_contract_status_id"
+    t.index ["location_id"], name: "index_contracts_on_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
