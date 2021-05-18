@@ -37,4 +37,7 @@ en:
     dashboard_welcome:
       welcome: "More to come.."
 
+  time:
+    formats:
+      long: "%b %d, %Y"
 
