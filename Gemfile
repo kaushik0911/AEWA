@@ -85,3 +85,6 @@ gem "figaro"
 # ActiveAdmin Addons
 # https://github.com/platanus/activeadmin_addons 
 gem 'activeadmin_addons'
+
+# Webpacker gem for frontend
+gem 'webpacker'
