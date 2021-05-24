@@ -1,6 +1,6 @@
-class CreateContracts < ActiveRecord::Migration[5.2]
+class CreateProjects < ActiveRecord::Migration[5.2]
   def change
-    create_table :contracts do |t|
+    create_table :projects do |t|
       t.string :title
       t.text :description
       t.references :contract_status
@@ -9,7 +9,5 @@ class CreateContracts < ActiveRecord::Migration[5.2]
       t.datetime :end_date
       t.timestamps
     end
-
-    # remove_column :locations, :status
   end
 end

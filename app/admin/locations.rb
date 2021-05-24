@@ -1,5 +1,5 @@
 ActiveAdmin.register Location do
-  menu priority: 2
+  menu priority: 3
 
   permit_params :title, :street, :city, :zipcode, :lat, :lng
 
@@ -9,7 +9,7 @@ ActiveAdmin.register Location do
   index do
     id_column
     column :address
-    column('number of contracts') { |location| location.contract.count }
+    column('number of contracts') { |location| location.project.count }
     actions
   end
   

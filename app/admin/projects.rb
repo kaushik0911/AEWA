@@ -1,9 +1,9 @@
-ActiveAdmin.register Contract do
+ActiveAdmin.register Project do
   menu priority: 2
 
-  permit_params :title, :description, :contract_status_id, :location_id, :start_date, :end_date
+  permit_params :title, :description, :project_status_id, :location_id, :start_date, :end_date
 
-  filter :contract_status, label: 'contract_status'
+  filter :project_status, label: 'project_status'
   filter :location, label: 'location'
   filter :start_date, label: 'start date'
   filter :end_date, label: 'end date'
@@ -22,7 +22,7 @@ ActiveAdmin.register Contract do
     f.inputs 'Site Details' do
       f.input :title
       f.input :description
-      f.input :contract_status, input_html: { class: "select2" }
+      f.input :project_status, input_html: { class: "select2" }
       f.input :location, input_html: { class: "select2" }
       f.input :start_date, as: :date_time_picker, picker_options: { timepicker: false }
       f.input :end_date, as: :date_time_picker, picker_options: { timepicker: false }
