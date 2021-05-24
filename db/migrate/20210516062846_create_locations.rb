@@ -8,6 +8,7 @@ class CreateLocations < ActiveRecord::Migration[5.2]
       t.float :lat
       t.float :lng
       t.integer :status
+      t.boolean :desplay
       t.timestamps
     end
   end

@@ -3,10 +3,11 @@ class CreateProjects < ActiveRecord::Migration[5.2]
     create_table :projects do |t|
       t.string :title
       t.text :description
-      t.references :contract_status
+      t.references :project_status
       t.references :location
       t.datetime :start_date
       t.datetime :end_date
+      t.boolean :desplay
       t.timestamps
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_24_042202) do
+ActiveRecord::Schema.define(version: 2021_05_24_043039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2021_05_24_042202) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carousels", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url"
+    t.boolean "desplay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "title"
     t.string "street"
@@ -55,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_042202) do
     t.string "zipcode"
     t.float "lat"
     t.float "lng"
+    t.integer "status"
+    t.boolean "desplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,25 +79,21 @@ ActiveRecord::Schema.define(version: 2021_05_24_042202) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.bigint "contract_status_id"
+    t.bigint "project_status_id"
     t.bigint "location_id"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.boolean "desplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["contract_status_id"], name: "index_projects_on_contract_status_id"
     t.index ["location_id"], name: "index_projects_on_location_id"
+    t.index ["project_status_id"], name: "index_projects_on_project_status_id"
   end
 
   create_table "sample_models", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "service_types", force: :cascade do |t|
-    t.string "name"
+    t.boolean "desplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_042202) do
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.boolean "desplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
