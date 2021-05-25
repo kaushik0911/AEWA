@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2021_05_24_043039) do
     t.boolean "desplay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_locations_on_project_id"
   end
 
   create_table "project_statuses", force: :cascade do |t|

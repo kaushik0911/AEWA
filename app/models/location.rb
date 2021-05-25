@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  has_many :project
+  belongs_to :project
 
   def address
     [street, city, zipcode].compact.map(&:capitalize).join(', ')

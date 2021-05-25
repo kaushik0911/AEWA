@@ -10,5 +10,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.boolean :desplay
       t.timestamps
     end
+
+    add_reference :locations, :project, index: true
   end
 end

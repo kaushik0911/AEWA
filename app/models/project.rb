@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
-  belongs_to :location
+  has_one :location
   belongs_to :project_status
+
+  accepts_nested_attributes_for :location
 end
