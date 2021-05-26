@@ -4,13 +4,19 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.references :project_status
-      t.references :location
       t.datetime :start_date
       t.datetime :end_date
+
+      t.string :title
+      t.string :street
+      t.string :city
+      t.string :zipcode
+
+      t.float :lat
+      t.float :lng
+
       t.boolean :desplay
       t.timestamps
     end
-
-    add_reference :locations, :project, index: true
   end
 end
