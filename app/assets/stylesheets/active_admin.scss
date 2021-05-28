@@ -38,4 +38,10 @@ $skinLogo: asset_url("admin_logo.png") no-repeat 0 0;
 //
 //   .status_tag { background: #6090DB; }
 
-
+#sample-model-images {
+  li {
+    display: inline;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+}
