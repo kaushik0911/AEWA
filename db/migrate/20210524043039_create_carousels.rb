@@ -4,7 +4,7 @@ class CreateCarousels < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.string :url
-      t.boolean :desplay
+      t.boolean :display
       t.timestamps
     end
   end

@@ -1,13 +1,13 @@
 ActiveAdmin.register Service do
   menu priority: 5
-  permit_params :title, :description, :desplay, :image
+  permit_params :title, :description, :display, :image
   filter :title_cont, label: 'title'
 
   form do |f|
     f.inputs 'Slider Details' do
       f.input :title
       f.input :description, as: :quill_editor
-      f.input :desplay, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
+      f.input :display, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
     end
 
     f.inputs 'Slider Image' do

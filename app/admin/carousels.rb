@@ -1,6 +1,6 @@
 ActiveAdmin.register Carousel do
   menu priority: 7
-  permit_params :title, :description, :desplay, :image, :url
+  permit_params :title, :description, :display, :image, :url
   filter :title_cont, label: 'title'
 
   form do |f|
@@ -8,7 +8,7 @@ ActiveAdmin.register Carousel do
       f.input :title
       f.input :description, as: :quill_editor
       f.input :url
-      f.input :desplay, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
+      f.input :display, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
     end
 
     f.inputs 'Slider Image' do

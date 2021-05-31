@@ -1,7 +1,7 @@
 ActiveAdmin.register Project do
   menu priority: 2
 
-  permit_params :title, :description, :project_status_id, :start_date, :end_date, :desplay,
+  permit_params :title, :description, :project_status_id, :start_date, :end_date, :display,
                   :street, :city, :zipcode, :lat, :lng
 
   filter :project_status, label: 'project status'
@@ -15,7 +15,7 @@ ActiveAdmin.register Project do
     column :city
     column :start_date
     column :end_date
-    toggle_bool_column :desplay
+    toggle_bool_column :display
     actions
   end
 
@@ -26,7 +26,7 @@ ActiveAdmin.register Project do
       f.input :project_status, input_html: { class: "select2" }
       f.input :start_date, as: :date_time_picker, picker_options: { timepicker: false }
       f.input :end_date, as: :date_time_picker, picker_options: { timepicker: false }
-      f.input :desplay, as: :select, input_html: { class: "select2" }, label: 'desplay', collection: [['Hide', false], ['Show', true]]
+      f.input :display, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
     end
 
     f.inputs "Location" do

@@ -15,7 +15,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.float :lat
       t.float :lng
 
-      t.boolean :desplay
+      t.boolean :display
       t.timestamps
     end
   end

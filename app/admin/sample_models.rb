@@ -7,7 +7,7 @@ ActiveAdmin.register SampleModel do
     f.inputs 'Site Details' do
       f.input :title
       f.input :description, as: :quill_editor
-      f.input :desplay, as: :select, input_html: { class: "select2" }, label: 'desplay', collection: [['Hide', false], ['Show', true]]
+      f.input :display, as: :select, input_html: { class: "select2" }, label: 'display', collection: [['Hide', false], ['Show', true]]
     end
 
     f.inputs 'Images' do
