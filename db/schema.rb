@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
     t.string "title"
     t.text "description"
     t.string "url"
-    t.boolean "desplay"
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,24 +81,9 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "desplay"
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "title"
-    t.string "street"
-    t.string "city"
-    t.string "zipcode"
-    t.float "lat"
-    t.float "lng"
-    t.integer "status"
-    t.boolean "desplay"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_locations_on_project_id"
   end
 
   create_table "project_statuses", force: :cascade do |t|
@@ -118,7 +103,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
     t.string "zipcode"
     t.float "lat"
     t.float "lng"
-    t.boolean "desplay"
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_status_id"], name: "index_projects_on_project_status_id"
@@ -127,7 +112,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
   create_table "sample_models", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "desplay"
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -135,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.boolean "desplay"
+    t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
