@@ -1,0 +1,17 @@
+<!-- Sliders -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <% @sliders.each_with_index do |slider, index| %>
+    <div class="slider-container w3-animate-left">
+      <div style="background-image: url(<%= url_for(slider.image) %>)" class="slider-image"></div>
+      <div class="w3-display-middle w3-margin-top w3-center">
+        <h1 class="w3-large w3-text-white"><span class="w3-padding w3-black w3-opacity"><b><%= slider.title %></b></span> <span class="w3-hide-small w3-text-light-grey"><%= slider.description.html_safe %></span></h1>
+      </div>
+    </div>
+  <% end %>
+  <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle slider-nav" style="width:100%">
+    <% @sliders.each_with_index do |slider, index| %>
+      <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(<%= index + 1 %>)"></span>
+    <% end %>
+  </div>
+</header>
+
