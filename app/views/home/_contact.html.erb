@@ -11,9 +11,28 @@
       <i class="fa fa-paper-plane"></i> SEND MESSAGE
     </button>
   </form>
+
+  <%= form_with url: "", method: :post do |form| %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search" %>
+  <% end %>
+
 </div>
-  
+
 <!-- Image of location/map -->
 <div class="w3-container">
-  <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+  <div id="mapid"></div>
 </div>
+
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script>
+  var map = L.map('mapid').setView([6.8058884, 79.9429199], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  L.marker([6.8058884, 79.9429199]).addTo(map)
+      .bindPopup("<div class='map-label'>ALPHA ENGINEERING SERVICE<br>88, 21 Samindu Ln, Piliyandala 10300</div>")
+      .openPopup();
+</script>

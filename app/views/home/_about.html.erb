@@ -4,12 +4,27 @@
   <p><%= ENV['about_us'] %></p>
 </div>
 
-<div class="w3-row-padding w3-grayscale">
-  <div class="w3-col l3 m6 w3-margin-bottom">
-    <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-    <h3>John Doe</h3>
-    <p class="w3-opacity">CEO & Founder</p>
-    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-    <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
-  </div>
+<div class="w3-row-padding w3-grayscale my-team">
+  <% @team_members.each_with_index do |team_member| %>
+    <div class="w3-col l3 m6 w3-margin-bottom team-member">
+      <div style="background-image: url(<%= url_for(team_member.image) %>)" class="profile-image"></div>
+      <h3><%= team_member.full_name %> ( <%= team_member.nickname %> )</h3>
+      <p class="w3-opacity"><%= team_member.job_role %></p>
+      <p><%= team_member.description.html_safe %></p>
+      <p>
+        <i class="fas fa-phone-alt"></i>
+        :
+        <%= team_member.primary_contact_number %>
+        <%= " / #{team_member.secondary_contact_number}" unless team_member.secondary_contact_number.empty? %>
+      </p>
+      <p>
+        <i class="fas fa-mail-bulk"></i>
+        :
+        <%= team_member.email %>
+      </p>
+      <p>
+        <a class="w3-button w3-light-grey w3-block" href="tel:<%= team_member.primary_contact_number %>">Call Now</a>
+      </p>
+    </div>
+  <% end %>
 </div>

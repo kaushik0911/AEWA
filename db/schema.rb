@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_040822) do
+ActiveRecord::Schema.define(version: 2021_06_02_180656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contact_us", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "subject"
+    t.string "comment"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -120,6 +130,19 @@ ActiveRecord::Schema.define(version: 2021_05_26_040822) do
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.boolean "display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.string "nickname"
+    t.string "full_name"
+    t.text "description"
+    t.integer "job_role"
+    t.string "primary_contact_number"
+    t.string "secondary_contact_number"
+    t.string "email"
     t.boolean "display"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
