@@ -5,7 +5,7 @@ class CreateContactUs < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :subject
       t.string :comment
-      t.integer :status
+      t.integer :status, default: 0
       t.timestamps
     end
   end

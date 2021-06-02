@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_180656) do
     t.string "email"
     t.string "subject"
     t.string "comment"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

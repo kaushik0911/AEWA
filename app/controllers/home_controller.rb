@@ -6,12 +6,14 @@ class HomeController < ApplicationController
   end
 
   def contact_us
-
+    contact_us = ContactU.create(contact_us_params)
+    flash[:notice] = "You message have successfully sent."
+    redirect_to :root
   end
 
   private
 
   def contact_us_params
-    re
+    params.permit(:name, :email, :subject, :comment)
   end
 end

@@ -88,3 +88,6 @@ gem 'activeadmin_addons'
 
 # Webpacker gem for frontend
 # gem 'webpacker'
+
+# For handle boots
+gem "recaptcha"
