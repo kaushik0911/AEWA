@@ -12,3 +12,18 @@
     </div>
   </div>
 </div>
+
+<% flash.each do |type, message| %>
+  <% case type %>
+  <% when 'danger' %>
+    <div class="w3-panel w3-red w3-display-container flash-message">
+  <% when 'success' %>
+    <div class="w3-panel w3-green w3-display-container flash-message">
+  <% else %>
+    <div class="w3-panel w3-blue w3-display-container flash-message">
+  <% end %>
+    <span onclick="this.parentElement.style.display='none'"
+    class="w3-button w3-xlarge w3-display-topright">&times;</span>
+    <p><%= message %></p>
+  </div>
+<% end %>

@@ -40,4 +40,9 @@ en:
   time:
     formats:
       long: "%b %d, %Y"
+  
+  home:
+    contact_us:
+      success: "Your message have successfully sent."
+      danger: "The captcha wasn’t entered correctly."
 
