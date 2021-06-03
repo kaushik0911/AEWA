@@ -6,9 +6,13 @@ class HomeController < ApplicationController
   end
 
   def contact_us
-    contact_us = ContactU.create(contact_us_params)
-    flash[:notice] = "You message have successfully sent."
-    redirect_to :root
+    contact_us = ContactU.new(contact_us_params)
+    if verify_recaptcha(model: contact_us)
+      flash[:notice] = "You message have successfully sent."
+      redirect_to :root
+    else
+      render 'index'
+    end
   end
 
   private

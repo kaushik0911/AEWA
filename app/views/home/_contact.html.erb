@@ -2,7 +2,7 @@
 <div class="w3-container w3-padding-32" id="contact">
   <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
   <p>Lets get in touch and talk about your project.</p>
-  <%= form_with url: contact_us_path, method: :post do |form| %>
+  <%= form_with url: contact_us_path, method: :post, html: {autocomplete: false} do |form| %>
     <%= form.text_field :name, class: "w3-input w3-border", placeholder: "Name", required: true %>
     <%= form.text_field :email, class: "w3-input w3-section w3-border", placeholder: "Email", required: true  %>
     <%= form.text_field :subject, class: "w3-input w3-section w3-border", placeholder: "Subject", required: true %>
