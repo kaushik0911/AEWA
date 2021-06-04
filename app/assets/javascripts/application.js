@@ -16,7 +16,7 @@
 //= require_tree .
 
 var myIndex = 0;
-// carousel();
+carousel();
 function carousel() {
   var i;
   var x = document.getElementsByClassName("slider-container");
