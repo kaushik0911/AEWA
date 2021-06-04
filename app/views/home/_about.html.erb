@@ -7,7 +7,7 @@
 <div class="w3-row-padding w3-grayscale my-team">
   <% @team_members.each_with_index do |team_member| %>
     <div class="w3-col l3 m6 w3-margin-bottom team-member">
-      <div style="background-image: url(<%= url_for(team_member.image) %>)" class="profile-image"></div>
+      <div style="background-image: url(<%= rails_blob_path(team_member.image , only_path: true) %>)" class="profile-image"></div>
       <h3><%= team_member.full_name %> ( <%= team_member.nickname %> )</h3>
       <p class="w3-opacity"><%= team_member.job_role %></p>
       <p><%= team_member.description.html_safe %></p>

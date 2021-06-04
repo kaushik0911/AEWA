@@ -8,7 +8,7 @@
     <div class="w3-col s12 m6 l4 w3-margin-bottom">
       <div class="w3-display-container service-container">
         <div class="w3-display-middle w3-black w3-padding"><%= service.title %></div>
-        <div style="background-image: url(<%= url_for(service.image) %>)" class="service-image"></div>
+        <div style="background-image: url(<%= rails_blob_path(service.image , only_path: true) %>)" class="service-image"></div>
         <%#= image_tag(service.image, alt: service.title, style: "width:100%") %>
       </div>
     </div>
