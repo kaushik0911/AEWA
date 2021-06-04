@@ -4,7 +4,7 @@
     <div class="slider-container w3-animate-left">
       <div style="background-image: url(<%= url_for(slider.image) %>)" class="slider-image"></div>
       <div class="w3-display-middle w3-margin-top w3-center">
-        <h1 class="w3-large w3-text-white"><span class="w3-padding w3-black"><b><%= slider.title %></b></span> <span class="w3-hide-small w3-text-light-grey"><%= slider.description.html_safe %></span></h1>
+        <h1 class="w3-large w3-text-white"><span class="w3-padding w3-black"><b><%= slider.title %></b></span><span class="w3-padding w3-hide-small w3-text-light-grey"><%= slider.description.html_safe %></span></h1>
       </div>
     </div>
   <% end %>
