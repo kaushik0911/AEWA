@@ -1,0 +1,46 @@
+<div class="w3-container w3-theme-l5" style="min-height: 100vh;">
+  <div class="w3-row">
+    <div class="w3-col m6">
+      <div class="w3-row w3-center">
+        <a href="javascript:void(0)" onclick="openStatus(event, 'ongoing');">
+          <div class="w3-padding-16 w3-large w3-col m6 tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">On Going</div>
+        </a>
+        <a href="javascript:void(0)" onclick="openStatus(event, 'completed');">
+          <div class="w3-padding-16 w3-large w3-col m6 tablink w3-bottombar w3-hover-light-grey w3-padding">Completed</div>
+        </a>
+      </div>
+      <div class="w3-row">
+        <div id="ongoing" class="w3-container status-content">
+          <% @ongoing.each do |project| %>
+            <h2>Ongoing</h2>
+            <p>London is the capital city of England.</p>
+          <% end %>
+        </div>
+        <div id="completed" class="w3-container status-content" style="display:none">
+          <h2>Paris</h2>
+          <p>Paris is the capital of France.</p> 
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m6">
+      <div style="">
+        <div class="w3-white" id="projects-map">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="leaflet/leaflet.js"></script>
+
+<script>
+  var map = L.map('projects-map', { scrollWheelZoom: false, zoomControl: false }).setView([6.8058884, 79.9429199], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  L.marker([6.8058884, 79.9429199]).addTo(map)
+      .bindPopup("<div class='map-label'>ALPHA ENGINEERING SERVICE<br>88, 21 Samindu Ln, Piliyandala 10300</div>")
+      .openPopup();
+</script>

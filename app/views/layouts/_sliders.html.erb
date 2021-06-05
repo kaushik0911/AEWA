@@ -1,5 +1,5 @@
 <!-- Sliders -->
-<header class="w3-display-container w3-content w3-wide w3-padding-16" style="max-width:1500px;" id="home">
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
   <% @sliders.each_with_index do |slider, index| %>
     <div class="slider-container w3-animate-left">
       <div style="background-image: url(<%= rails_blob_path(slider.image , only_path: true) %>)" class="slider-image"></div>

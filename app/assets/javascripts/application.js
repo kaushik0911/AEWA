@@ -50,3 +50,17 @@ function showDivs(n) {
   dots[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " w3-white";
 }
+
+function openStatus(evt, status) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("status-content");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+  }
+  document.getElementById(status).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-border-red";
+}
