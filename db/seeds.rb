@@ -2,7 +2,7 @@
 
 # AdminUser.create!(email: 'admin@example.com', password: 'pa$$w0rd', password_confirmation: 'pa$$w0rd')
 
-# ProjectStatus.create([{name: 'Pending'}, {name: 'Negotiating'}, {name: 'Accepted'}, {name: 'Inprogress'}, {name: 'Hold'}, {name: 'Completed'}, {name: 'Canceled'}])
+# ProjectStatus.create([{name: 'Pending'}, {name: 'Negotiating'}, {name: 'Accepted'}, {name: 'Ongoing'}, {name: 'Hold'}, {name: 'Completed'}, {name: 'Canceled'}])
 
 # for i in 0...5
 #   carousel = Carousel.create({
@@ -48,13 +48,13 @@ for i in 0...10
     title: "Lorem Ipsum",
     description: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
     display: true,
-    project_status: ProjectStatus.pending,
+    project_status: ProjectStatus.completed,
     start_date: Date.today,
     end_date: (Date.today + 30.day),
     street: "4921 Frank Avenue",
     city: "Bridgeville",
     zipcode: "PA 15017",
-    lat: rand(6.8...6.9).round(6),
-    lng: rand(79.8...79.9).round(6)
+    lat: rand(7.1...7.2).round(6),
+    lng: rand(79.9...80.1).round(6)
   })
 end

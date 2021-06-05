@@ -1,11 +1,9 @@
 class ProjectsController < ApplicationController
   def index
-    @ongoing = Project.pending
-    gon.rabl
+    @ongoing = Project.ongoing
+    @completed = Project.completed
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @ongoing }
-    end
+    gon.ongoing   = @ongoing
+    gon.completed = @completed
   end
 end

@@ -1,5 +1,9 @@
 class ProjectStatus < ApplicationRecord
-  def self.pending
-    self.find_by(name: "Pending")
+  def self.completed
+    self.find_by(name: "Completed")
+  end
+
+  def self.ongoing
+    self.find_by(name: "Ongoing")
   end
 end

@@ -30,20 +30,28 @@
       </div>
       <div class="w3-row">
         <div id="ongoing" class="w3-container projects">
-          <% @ongoing.each do |project| %>
+          <% @ongoing.each do |ongoing_project| %>
             <div class="w3-card w3-white w3-margin">
               <div class="w3-container">
-              <h3><%= project.title %></h3>
-              <p><%= project.description %></p>
-              <p>Start date : <%= project.start_date.to_date %></p>
-              <p><%= project.address %></p>
+                <h3><%= ongoing_project.title %></h3>
+                <p><%= ongoing_project.description %></p>
+                <p>Start date : <%= ongoing_project.start_date.to_date %></p>
+                <p><%= ongoing_project.address %></p>
               </div>
             </div>
           <% end %>
         </div>
         <div id="completed" class="w3-container projects" style="display:none">
-          <h2>Paris</h2>
-          <p>Paris is the capital of France.</p> 
+          <% @completed.each do |completed_project| %>
+            <div class="w3-card w3-white w3-margin">
+              <div class="w3-container">
+                <h3><%= completed_project.title %></h3>
+                <p><%= completed_project.description %></p>
+                <p>Start date : <%= completed_project.start_date.to_date %></p>
+                <p><%= completed_project.address %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -74,20 +82,49 @@
     }
   ).addTo(projectsMap);
 
-  gon.ongoing.forEach(data => {
-    console.log(data);
-    let marker = L.marker([data.lat.toString(), data.lng.toString()]).addTo(projectsMap).on('click', function(e) {
-        clickZoom(e);
-      }
-    );
+  var markerGroup = L.layerGroup().addTo(projectsMap);
 
-    // bubble label
-    let label = "<b>"+data.title+"</b><br>"+ data.address;
-    marker.bindPopup(label).openPopup();
-  });
+  function loadMap(status) {
+    let locations = [];
+    if (status === "ongoing") {
+      locations = gon.ongoing;
+    } else {
+      locations = gon.completed;
+    }
+
+    markerGroup.clearLayers();
+
+    locations.forEach(data => {
+      let marker = L.marker([data.lat.toString(), data.lng.toString()]).addTo(markerGroup).on('click', function(e) {
+          clickZoom(e);
+        }
+      );
+      // bubble label
+      let label = "<b>"+data.title+"</b><br>";
+      marker.bindPopup(label).openPopup();
+    });
+  }
 
   function clickZoom(e) {
     let zoom = projectsMap.getZoom()
     projectsMap.setView(e.target.getLatLng(), zoom);
   }
+
+  function openStatus(evt, status) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("projects");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+    }
+    document.getElementById(status).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-border-red";
+
+    loadMap(status);
+  }
+
+  loadMap("ongoing");
 </script>
