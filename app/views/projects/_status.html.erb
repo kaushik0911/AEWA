@@ -1,4 +1,4 @@
-<div class="w3-container w3-theme-l5" style="min-height: 100vh;">
+<div class="w3-container w3-theme-l5 status-content">
   <div class="w3-row">
     <div class="w3-col m6">
       <div class="w3-row w3-center">
@@ -10,13 +10,19 @@
         </a>
       </div>
       <div class="w3-row">
-        <div id="ongoing" class="w3-container status-content">
+        <div id="ongoing" class="w3-container projects">
           <% @ongoing.each do |project| %>
-            <h2>Ongoing</h2>
-            <p>London is the capital city of England.</p>
+            <div class="w3-card w3-white w3-margin">
+              <div class="w3-container">
+              <h3><%= project.title %></h3>
+              <p><%= project.description %></p>
+              <p>Start date : <%= project.start_date.to_date %></p>
+              <p><%= project.address %></p>
+              </div>
+            </div>
           <% end %>
         </div>
-        <div id="completed" class="w3-container status-content" style="display:none">
+        <div id="completed" class="w3-container projects" style="display:none">
           <h2>Paris</h2>
           <p>Paris is the capital of France.</p> 
         </div>

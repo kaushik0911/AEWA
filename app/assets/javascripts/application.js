@@ -53,7 +53,7 @@ function showDivs(n) {
 
 function openStatus(evt, status) {
   var i, x, tablinks;
-  x = document.getElementsByClassName("status-content");
+  x = document.getElementsByClassName("projects");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
   }

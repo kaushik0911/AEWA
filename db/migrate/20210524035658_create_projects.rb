@@ -7,7 +7,6 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.datetime :start_date
       t.datetime :end_date
 
-      t.string :title
       t.string :street
       t.string :city
       t.string :zipcode

@@ -3,4 +3,8 @@ class Project < ApplicationRecord
   has_many_attached :images
 
   scope :pending, -> { where("project_status_id = ?", ProjectStatus.pending.id) }
+
+  def address
+    [street, city, zipcode].compact.join(', ')
+  end
 end

@@ -1,13 +1,24 @@
 #projects-map {
+  bottom: 0;
+  height: 100%;
   position: fixed;
   top: 0px;
-  bottom: 0;
   width: 50%;
-  height: 100%;
   z-index: -999;
 }
 
 .statistics {
   position: fixed;
   width: 100%;
+}
+
+.status-content {
+  min-height: 100vh;
+  padding: 0.01em 0px;
+
+  #ongoing,
+  #completed {
+    height: 100vh !important;
+    overflow: scroll;
+  }
 }
