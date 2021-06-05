@@ -91,3 +91,8 @@ gem 'activeadmin_addons'
 
 # For handle boots
 gem "recaptcha"
+
+# https://github.com/gazay/gon
+# for json data
+gem 'gon'
+gem 'rabl-rails'

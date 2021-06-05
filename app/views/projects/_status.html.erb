@@ -1,6 +1,25 @@
 <div class="w3-container w3-theme-l5 status-content">
   <div class="w3-row">
     <div class="w3-col m6">
+      <div class="w3-container w3-row w3-center w3-dark-grey w3-padding-16">
+        <div class="w3-quarter">
+          <span class="w3-xxlarge">14+</span>
+          <br>Ongoing
+        </div>
+        <div class="w3-quarter">
+          <span class="w3-xxlarge">55+</span>
+          <br>Completed
+        </div>
+        <div class="w3-quarter">
+          <span class="w3-xxlarge">89+</span>
+          <br>Happy Clients
+        </div>
+        <div class="w3-quarter">
+          <span class="w3-xxlarge">150+</span>
+          <br>Meetings
+        </div>
+      </div>
+
       <div class="w3-row w3-center">
         <a href="javascript:void(0)" onclick="openStatus(event, 'ongoing');">
           <div class="w3-padding-16 w3-large w3-col m6 tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">On Going</div>
@@ -40,13 +59,35 @@
 <script src="leaflet/leaflet.js"></script>
 
 <script>
-  var map = L.map('projects-map', { scrollWheelZoom: false, zoomControl: false }).setView([6.8058884, 79.9429199], 14);
+  var projectsMap = L.map('projects-map', {scrollWheelZoom: false, zoomControl: false})
+                     .setView([6.8058884, 79.9429199], 11)
+                     
+  L.control.zoom({position:'bottomleft'}).addTo(projectsMap);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1Ijoia2F1c2hpa3MiLCJhIjoiY2tqazIwZHN0MGExdjJzczJnZHdra2JweiJ9.DwDqTWB8kTASzJkmx13zOA'
+    }
+  ).addTo(projectsMap);
 
-  L.marker([6.8058884, 79.9429199]).addTo(map)
-      .bindPopup("<div class='map-label'>ALPHA ENGINEERING SERVICE<br>88, 21 Samindu Ln, Piliyandala 10300</div>")
-      .openPopup();
+  gon.ongoing.forEach(data => {
+    console.log(data);
+    let marker = L.marker([data.lat.toString(), data.lng.toString()]).addTo(projectsMap).on('click', function(e) {
+        clickZoom(e);
+      }
+    );
+
+    // bubble label
+    let label = "<b>"+data.title+"</b><br>"+ data.address;
+    marker.bindPopup(label).openPopup();
+  });
+
+  function clickZoom(e) {
+    let zoom = projectsMap.getZoom()
+    projectsMap.setView(e.target.getLatLng(), zoom);
+  }
 </script>

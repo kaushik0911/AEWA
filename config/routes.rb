@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   post 'contact_us', action: :contact_us, controller: 'home'
   get 'projects', action: :index, controller: 'projects'
+
+  defaults format: :json do
+    get 'api/v1/projects.json', to: "projects#index"
+  end
 end

@@ -31,6 +31,10 @@ html {
   scroll-behavior: smooth;
 }
 
+footer {
+  position: relative;
+}
+
 .main-container {
   max-width: $fixed-container-width;
   margin-top: $fixed-margin-top;

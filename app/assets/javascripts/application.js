@@ -16,7 +16,7 @@
 //= require_tree .
 
 var myIndex = 0;
-carousel();
+// carousel();
 function carousel() {
   var i;
   var x = document.getElementsByClassName("slider-container");
@@ -30,7 +30,7 @@ function carousel() {
 }
 
 var slideIndex = 1;
-showDivs(slideIndex);
+// showDivs(slideIndex);
 
 function currentDiv(n) {
   showDivs(slideIndex = n);
