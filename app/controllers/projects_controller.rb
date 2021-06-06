@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
     @ongoing = Project.ongoing
     @completed = Project.completed
 
-    gon.ongoing   = @ongoing
-    gon.completed = @completed
+    gon.ongoing   = @ongoing.order(id: :desc) || []
+    gon.completed = @completed.order(id: :desc) || []
   end
 end

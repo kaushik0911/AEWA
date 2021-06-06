@@ -31,9 +31,9 @@
       <div class="w3-row">
         <div id="ongoing" class="w3-container projects">
           <% @ongoing.each do |ongoing_project| %>
-            <div class="w3-card w3-white w3-margin">
+            <div class="w3-card w3-white w3-margin project-card" id="<%= "proj#{ongoing_project.id}" %>" onclick="showMeOnMap(event, <%= ongoing_project.lat.to_s %>, <%= ongoing_project.lng.to_s %>);">
               <div class="w3-container">
-                <h3><%= ongoing_project.title %></h3>
+                <h3><%= ongoing_project.id %></h3>
                 <p><%= ongoing_project.description %></p>
                 <p>Start date : <%= ongoing_project.start_date.to_date %></p>
                 <p><%= ongoing_project.address %></p>
@@ -43,11 +43,12 @@
         </div>
         <div id="completed" class="w3-container projects" style="display:none">
           <% @completed.each do |completed_project| %>
-            <div class="w3-card w3-white w3-margin">
+            <div class="w3-card w3-white w3-margin project-card" id="<%= "proj#{completed_project.id}" %>" onclick="showMeOnMap(event, <%= completed_project.lat.to_s %>, <%= completed_project.lng.to_s %>);">
               <div class="w3-container">
-                <h3><%= completed_project.title %></h3>
+                <h3><%= completed_project.id %></h3>
                 <p><%= completed_project.description %></p>
                 <p>Start date : <%= completed_project.start_date.to_date %></p>
+                <p>Completed date : <%= completed_project.end_date.to_date %></p>
                 <p><%= completed_project.address %></p>
               </div>
             </div>
@@ -67,8 +68,9 @@
 <script src="leaflet/leaflet.js"></script>
 
 <script>
+  const initZoomLevel = 11;
   var projectsMap = L.map('projects-map', {scrollWheelZoom: false, zoomControl: false})
-                     .setView([6.8058884, 79.9429199], 11)
+                     .setView([6.8058884, 79.9429199], initZoomLevel)
                      
   L.control.zoom({position:'bottomleft'}).addTo(projectsMap);
 
@@ -85,29 +87,65 @@
   var markerGroup = L.layerGroup().addTo(projectsMap);
 
   function loadMap(status) {
-    let locations = [];
-    if (status === "ongoing") {
-      locations = gon.ongoing;
-    } else {
-      locations = gon.completed;
-    }
-
+    locations = getLocations(status);
     markerGroup.clearLayers();
 
-    locations.forEach(data => {
+    locations.forEach((data, indx) => {
       let marker = L.marker([data.lat.toString(), data.lng.toString()]).addTo(markerGroup).on('click', function(e) {
           clickZoom(e);
+          showMe(e, status);
         }
       );
       // bubble label
-      let label = "<b>"+data.title+"</b><br>";
+      let label = "<div style='text-align:center;'><b>"+data.title+"</b><br>"+address(data)+"</div>";
       marker.bindPopup(label).openPopup();
+      projectsMap.setView(marker.getLatLng(), initZoomLevel);
     });
   }
 
   function clickZoom(e) {
     let zoom = projectsMap.getZoom()
     projectsMap.setView(e.target.getLatLng(), zoom);
+  }
+
+  function showMeOnMap(e, lat, lng) {
+    let zoom = projectsMap.getZoom();
+    var latLng = L.latLng(lat, lng);
+    projectsMap.setView(latLng, zoom);
+    markerGroup.eachLayer(function (layer) {
+      markerLatLng = layer._latlng;
+      if(markerLatLng.lat === lat && markerLatLng.lng === lng) {
+        e.currentTarget.classList.remove("animate-opacity");
+        layer.openPopup();
+        e.currentTarget.classList.add("animate-opacity");
+      }
+    });
+  }
+
+  function showMe(e, status) {
+    let latLng = e.target.getLatLng();
+    locations = getLocations(status);
+
+    locations.forEach(data => {
+      if(data.lat === latLng.lat && data.lng === latLng.lng) {
+        let card = document.getElementById("proj" + data.id.toString());
+        card.classList.remove("animate-opacity");
+        card.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+        card.classList.add("animate-opacity");
+      }
+    })
+  }
+
+  function getLocations(status) {
+    return status === "ongoing" ? gon.ongoing : gon.completed;
+  }
+
+  function removeAnimation() {
+    [...document.getElementsByClassName('project-card')].map(item => item.classList.remove('animate-opacity'));
+  }
+
+  function address(project) {
+    return [project.street, project.city, project.zipcode].filter(Boolean).join(", ");
   }
 
   function openStatus(evt, status) {
@@ -123,6 +161,7 @@
     document.getElementById(status).style.display = "block";
     evt.currentTarget.firstElementChild.className += " w3-border-red";
 
+    removeAnimation();
     loadMap(status);
   }
 

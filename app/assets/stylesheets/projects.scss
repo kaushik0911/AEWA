@@ -21,3 +21,27 @@
     overflow: scroll;
   }
 }
+
+@-webkit-keyframes fadeing {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fadeing {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fadeing {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeing {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-opacity {
+  -webkit-animation: fadeing 3s; /* Safari 4+ */
+  -moz-animation:    fadeing 3s; /* Fx 5+ */
+  -o-animation:      fadeing 3s; /* Opera 12+ */
+  animation:         fadeing 3s; /* IE 10+, Fx 29+ */
+}
