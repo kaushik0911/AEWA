@@ -33,7 +33,7 @@
           <% @ongoing.each do |ongoing_project| %>
             <div class="w3-card w3-white w3-margin project-card" id="<%= "proj#{ongoing_project.id}" %>" onclick="showMeOnMap(event, <%= ongoing_project.lat.to_s %>, <%= ongoing_project.lng.to_s %>);">
               <div class="w3-container">
-                <h3><%= ongoing_project.id %></h3>
+                <h3><%= ongoing_project.title %></h3>
                 <p><%= ongoing_project.description %></p>
                 <p>Start date : <%= ongoing_project.start_date.to_date %></p>
                 <p><%= ongoing_project.address %></p>
@@ -45,7 +45,7 @@
           <% @completed.each do |completed_project| %>
             <div class="w3-card w3-white w3-margin project-card" id="<%= "proj#{completed_project.id}" %>" onclick="showMeOnMap(event, <%= completed_project.lat.to_s %>, <%= completed_project.lng.to_s %>);">
               <div class="w3-container">
-                <h3><%= completed_project.id %></h3>
+                <h3><%= completed_project.title %></h3>
                 <p><%= completed_project.description %></p>
                 <p>Start date : <%= completed_project.start_date.to_date %></p>
                 <p>Completed date : <%= completed_project.end_date.to_date %></p>
