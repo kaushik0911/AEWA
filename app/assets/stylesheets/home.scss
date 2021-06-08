@@ -18,8 +18,19 @@
 }
 
 .site-navbar-items {
-  a:hover {
-    color: #fff5f5 !important;
-    background-color: #b47c02 !important;
+  a {
+    text-decoration: none;
+  }
+
+  .w3-bottombar {
+    border-color: #f1f1f1 !important;
+  }
+
+  .w3-bottombar-color, .w3-hover-border-color:hover {
+    border-color: #b47c02 !important;
+  }
+
+  .w3-button:hover {
+    background-color: #f1f1f1 !important;
   }
 }
