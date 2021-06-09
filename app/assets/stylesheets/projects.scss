@@ -14,15 +14,9 @@
 .status-content {
   min-height: 100vh;
   padding: 0.01em 0px;
-
-  #ongoing,
-  #completed {
-    height: 100vh !important;
-    overflow: scroll;
-  }
 }
 
-.w3-border-color:hover {
+.w3-border-color {
   border-color: #b47c02 !important;
 }
 

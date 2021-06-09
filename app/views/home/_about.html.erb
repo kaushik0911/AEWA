@@ -13,7 +13,10 @@
           <h3><%= team_member.full_name %></h3>
           <p class="w3-opacity"><%= team_member.job_role %></p>
           <p><%= team_member.description.html_safe %></p>
-          <p><span><i class="fa fa-envelope"></i></span><%= team_member.email %></p>
+          <p>
+            <a class="text-decoration-none"  href="mailto:<%= team_member.email %>">
+              <span><i class="fa fa-envelope"></i></span><%= team_member.email %></p>
+            </a>
           <p><a class="w3-button w3-light-grey w3-block" href="tel:<%= team_member.primary_contact_number %>">Call Now</a></p>
         </div>
       </div>

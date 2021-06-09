@@ -1,6 +1,6 @@
 <!-- Navbar (sit on top) -->
 <div class="w3-top site-navbar">
-  <div class="w3-bar w3-light-grey w3-wide w3-padding w3-card">
+  <div class="w3-bar w3-light-grey w3-wide w3-card site-navbar-container">
     <div class="w3-bar-item company-log"></div>
     <a href="/" class="w3-bar-item w3-button company-title" data-turbolinks="false"><b>ALPHA</b> Engineering Services</a>
     <!-- Float links to the right. Hide them on small screens -->
@@ -27,10 +27,3 @@
     <p><%= message %></p>
   </div>
 <% end %>
-
-<script>
-  function pressed(event) {
-    [...document.querySelectorAll(".site-navbar-items .w3-bottombar")].map(item => item.classList.remove('w3-bottombar-color'));
-    event.target.className += " w3-bottombar-color";
-  }
-</script>

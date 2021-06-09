@@ -23,7 +23,7 @@
  *= require_self
  */
 
-$fixed-margin-top: 56px;
+$fixed-margin-top: 45px;
 $fixed-container-width: 1564px;
 
 html {
@@ -37,7 +37,6 @@ footer {
 
 .main-container {
   max-width: $fixed-container-width;
-  margin-top: $fixed-margin-top;
 }
 
 .flash-message {
@@ -49,4 +48,8 @@ footer {
 
 .leaflet-popup-close-button {
   display: none; 
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
 }
