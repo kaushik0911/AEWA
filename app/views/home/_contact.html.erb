@@ -34,7 +34,9 @@
 <script src="leaflet/leaflet.js"></script>
 
 <script>
-  var map = L.map('contact-map', {scrollWheelZoom: false}).setView([6.8058884, 79.9429199], 14);
+  var map = L.map('contact-map', {scrollWheelZoom: false, zoomControl: false}).setView([6.8058884, 79.9429199], 14);
+
+  L.control.zoom({position:'bottomleft'}).addTo(map);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
