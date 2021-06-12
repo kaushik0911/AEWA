@@ -33,6 +33,7 @@ html {
 
 footer {
   position: relative;
+  padding: 0px 50px;
 
   .company-log {
     background-image: asset_url("admin_logo.png");
@@ -44,6 +45,38 @@ footer {
     margin: auto;
     margin-top: 10px;
     width: 50%;
+  }
+
+  .company{ 
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+    
+    li {
+      padding-bottom: 5px;
+    }
+
+    i {
+      padding-right: 25px;
+    }
+
+    .working-hours {
+      display: inline-flex;
+
+      .days {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  .fb-page {
+    padding-bottom: 15px;
+  }
+
+  .follow-us-links {
+    
   }
 }
 
@@ -64,4 +97,8 @@ footer {
 
 .text-decoration-none {
   text-decoration: none !important;
+}
+
+.text-left {
+  text-align: left !important;
 }
